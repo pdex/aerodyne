@@ -93,7 +93,7 @@ def parse_args():
   # brew formulas
   build_group(parser, 'install-bash-completion', HomebrewFormula, 'bash-completion', True)
   build_group(parser, 'install-emacs', HomebrewFormula, 'emacs', True)
-  build_group(parser, 'install-emacs', HomebrewFormula, 'git', True)
+  build_group(parser, 'install-git', HomebrewFormula, 'git', True)
   build_group(parser, 'install-maven', HomebrewFormula, 'maven', True)
   build_group(parser, 'install-packer', HomebrewFormula, 'packer', False)
 
