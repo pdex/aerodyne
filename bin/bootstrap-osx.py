@@ -118,7 +118,7 @@ def install_homebrew(args):
     print "brew: installing!"
     path = os.path.expanduser(args.homebrew_prefix)
     if not args.dry_run:
-      return shellout('''ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install | sed -e 's@^HOMEBREW_PREFIX[[:space:]]*=.*$@HOMEBREW_PREFIX = \"'{path}'\"@')"'''.format(path=path), echo=True)
+      return shellout('''ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install | sed -e 's@/usr/local@{path}@')"'''.format(path=path), echo=True)
     else:
       return False
 
