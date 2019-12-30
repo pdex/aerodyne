@@ -1,5 +1,6 @@
-#!/bin/bash -ex
+#!/bin/bash
 
+set -e -x
 ls -la
 ls -la ~
 ls -la ~/.local
