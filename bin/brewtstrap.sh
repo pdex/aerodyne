@@ -15,5 +15,6 @@ popd
 mkdir .emacs.d
 touch .emacs.d/init.el
 bash -c 'stow --verbose=3 -t $HOME -S .emacs.d'
+ls -lad $HOME/.emacs.d
 test -d $HOME/.emacs.d
 test -r $HOME/.emacs.d/init.el
