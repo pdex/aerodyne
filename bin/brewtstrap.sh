@@ -2,6 +2,7 @@
 
 set -e -x
 
+xcode-select --install
 mkdir -p ~/.local/bin
 pushd ~/.local
 git clone https://github.com/Homebrew/brew
