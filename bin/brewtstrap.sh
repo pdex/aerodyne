@@ -2,7 +2,7 @@
 
 set -e -x
 
-xcode-select --install
+xcode-select --install > /dev/null 2>&1 || echo "command line tools already installed"
 mkdir -p ~/.local/bin
 pushd ~/.local
 git clone https://github.com/Homebrew/brew
