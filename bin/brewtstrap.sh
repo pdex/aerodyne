@@ -1,21 +1,32 @@
 #!/bin/bash
 
-set -e -x
+set -e -u -x
 
-xcode-select --install > /dev/null 2>&1 || echo "command line tools already installed"
-mkdir -p ~/.local/bin
-pushd ~/.local
-git clone https://github.com/Homebrew/brew
-pushd bin
-ln -s ../brew/bin/brew brew
-echo 'if [ -d "$HOME/.local/bin" ]; then export PATH="$PATH:$HOME/.local/bin"; fi' >> ~/.bash_profile
-bash -c 'brew install stow'
-#brew install stow
-popd
-popd
-mkdir .emacs.d
-touch .emacs.d/init.el
-bash -c 'stow --verbose=3 -t $HOME -S .emacs.d'
-ls -lad $HOME/.emacs.d
-test -d $HOME/.emacs.d
-test -r $HOME/.emacs.d/init.el
+function setup-ssh-key() {
+  local keyfile=$HOME/.ssh/id_rsa.github.key
+  # -B           - display bubblebabble digest
+  # -b 2048.     - key bits (2048 recommended for RSA)
+  # -E sha256    - key fingerprint algo
+  # -f keyfile.  - private keyfile (public will be keyfile.pub)
+  # -N ""        - no password
+  # -t rsa       - private/public key type
+  #
+  ssh-keygen -B -b 2048 -E sha256 -f $keyfile -N "" -t rsa
+  ssh-add $keyfile
+  echo
+  echo "please add this ssh key to github"
+  echo
+  cat $keyfile.pub
+  echo
+  python3 -mwebbrowser -n https://github.com/settings/ssh/new
+  read -p "Please hit ENTER once you've added your key to github"
+}
+
+if [ $(uname -s) = "Darwin"]; then
+  xcode-select --install > /dev/null 2>&1 || echo "command line tools already installed"
+fi
+
+setup-ssh-key
+
+curl -fLo /tmp/yadm https://github.com/TheLocehiliosan/yadm/raw/master/yadm                                                                                                       
+bash /tmp/yadm clone --bootstrap git@github.com:$USER/dotfiles-public.git 
