@@ -28,7 +28,7 @@ else
   sudo apt install -y git
 fi
 
-setup-ssh-key
+ssh-add -l | grep github > /dev/null 2>&1 || setup-ssh-key
 
 curl -fLo /tmp/yadm https://github.com/TheLocehiliosan/yadm/raw/master/yadm                                                                                                       
 bash /tmp/yadm clone --bootstrap git@github.com:$USER/dotfiles-public.git 
