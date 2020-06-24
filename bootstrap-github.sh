@@ -22,7 +22,7 @@ function setup-ssh-key() {
   read -p "Please hit ENTER once you've added your key to github"
 }
 
-if [ $(uname -s) = "Darwin"]; then
+if [ $(uname -s) = "Darwin" ]; then
   xcode-select --install > /dev/null 2>&1 || echo "command line tools already installed"
 else
   sudo apt install -y git
