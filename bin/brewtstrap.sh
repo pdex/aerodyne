@@ -24,6 +24,8 @@ function setup-ssh-key() {
 
 if [ $(uname -s) = "Darwin"]; then
   xcode-select --install > /dev/null 2>&1 || echo "command line tools already installed"
+else
+  sudo apt install -y git
 fi
 
 setup-ssh-key
