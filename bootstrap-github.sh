@@ -16,7 +16,7 @@ function create-ssh-key() {
 
 function setup-ssh-key {
   create-ssh-key
-  if [ -n "$TESTING" ]; then
+  if [ -n "${TESTING:-}" ]; then
     return
   fi
   ssh-add $KEYFILE
@@ -30,7 +30,13 @@ function setup-ssh-key {
 }
 
 if [ $(uname -s) = "Darwin" ]; then
-  xcode-select --install > /dev/null 2>&1 || echo "command line tools already installed"
+  if ! git > /dev/null 2>&1l then
+    echo "command line tools need to be installed"
+    echo "run $0 again after xcode install is complete"
+    exit 1
+  else
+    echo "command line tools already installed"
+  fi
 else
   sudo apt install -y git
 fi
