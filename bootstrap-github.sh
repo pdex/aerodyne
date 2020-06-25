@@ -11,7 +11,7 @@ function create-ssh-key() {
   # -N ""        - no password
   # -t rsa       - private/public key type
   #
-  ssh-keygen -b 2048 -E sha256 -f $keyfile -N "" -t rsa
+  ssh-keygen -b 2048 -E sha256 -f $KEYFILE -N "" -t rsa
 }
 
 function setup-ssh-key {
