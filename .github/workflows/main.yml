@@ -27,4 +27,4 @@ jobs:
 
     # Runs a single command using the runners shell
     - name: test bootstrap script
-      run: env USER=pdex bash ./bootstrap-github.sh
+      run: env TESTING=true USER=pdex bash ./bootstrap-github.sh
