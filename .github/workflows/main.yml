@@ -19,6 +19,9 @@ jobs:
         os: [ubuntu-latest, macos-latest]
     # The type of runner that the job will run on
     runs-on: ${{ matrix.os }}
+    env:
+      TESTING: true
+      USER: pdex
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -27,4 +30,4 @@ jobs:
 
     # Runs a single command using the runners shell
     - name: test bootstrap script
-      run: env TESTING=true USER=pdex bash ./bootstrap-github.sh
+      run: bash ./bootstrap-github.sh
