@@ -1,5 +1,5 @@
 notifications:
   email: false
-osx_image: xcode8
+osx_image: xcode10.3
 os: osx
-script: ./bin/bootstrap-osx.py
+script: env USER=pdex bash ./bootstrap-github.sh
