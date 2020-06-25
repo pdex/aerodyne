@@ -30,7 +30,7 @@ function setup-ssh-key {
 }
 
 if [ $(uname -s) = "Darwin" ]; then
-  if ! git > /dev/null 2>&1l then
+  if ! git > /dev/null 2>&1; then
     echo "command line tools need to be installed"
     echo "run $0 again after xcode install is complete"
     exit 1
