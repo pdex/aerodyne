@@ -1,5 +1,0 @@
-notifications:
-  email: false
-osx_image: xcode10.3
-os: osx
-script: env TESTING=true USER=pdex bash ./bootstrap-github.sh
