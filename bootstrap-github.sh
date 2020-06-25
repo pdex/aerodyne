@@ -16,7 +16,7 @@ function create-ssh-key() {
 
 function setup-ssh-key {
   create-ssh-key
-  if [ -z "$TESTING" ]; then
+  if [ -n "$TESTING" ]; then
     return
   fi
   ssh-add $KEYFILE
