@@ -4,14 +4,13 @@ set -e -u -x
 
 function setup-ssh-key() {
   local keyfile=$HOME/.ssh/id_rsa.github.key
-  # -B           - display bubblebabble digest
   # -b 2048.     - key bits (2048 recommended for RSA)
   # -E sha256    - key fingerprint algo
   # -f keyfile.  - private keyfile (public will be keyfile.pub)
   # -N ""        - no password
   # -t rsa       - private/public key type
   #
-  ssh-keygen -B -b 2048 -E sha256 -f $keyfile -N "" -t rsa
+  ssh-keygen -b 2048 -E sha256 -f $keyfile -N "" -t rsa
   ssh-add $keyfile
   echo
   echo "please add this ssh key to github"
